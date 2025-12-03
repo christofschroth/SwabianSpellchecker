@@ -1,2 +1,86 @@
 SET UTF-8
 TRY esijanrtolcdugmphbyfvkwqxzäüößåôëESIJANRTOLCDUGMPHBYFVKWQXZÄÜÖÅÔË-.
+
+FLAG long # take two chars for the flags
+
+
+
+# regular verbs (Tunwörter regelmäßig) - present tense
+SFX Tr Y 4
+SFX Tr   a       0           .
+SFX Tr   a       st          .
+SFX Tr   a       t/Vr        .          # will be used for Vr (Vergangenheitsform regelmäßig)
+SFX Tr   a       at          .
+
+# Prefix: add "g" + transform a→t at the end, regular past tense (Vergangenheitsform regelmäßig)
+PFX Vr Y 1
+PFX Vr   0     g             [^bdgkptvz] # exception for words that start with these letters: no "g" in past tense
+
+# dummy for verbs where either (1) the present tense is regular but past tense is irregular, or (2) the past tense is already covered by the present tense (Tunwörter mit extra Vergangenheitsform)
+SFX Tx Y 4
+SFX Tx   a       0           .
+SFX Tx   a       st          .
+SFX Tx   a       t           .
+SFX Tx   a       at          .
+
+
+# present tense of verbs that end by "da" or "ta" (Tunwörter, die auf "da" enden), some other verbs also fall in this rule
+SFX Td Y 3
+SFX Td   a       e           .
+SFX Td   a       est         .
+SFX Td   a       at/Vd       .
+
+# Prefix: add "g" + transform a→t at the end, regular past tense (Vergangenheitsform von Tunwörtern, die auf "da" enden)
+PFX Vd Y 1
+PFX Vd   0     g             [^bgtv] # exception for words that start with these letters: no "g" in past tense
+
+
+# present tense of verbs that end by "sa" or "ßa" (Tunwörter, die auf "sa" enden) - found no rule for the past tense, so all past tenses are marked as irregular (Ti - Tunwörter irregulär)
+SFX Ts Y 3
+SFX Ts   a       0           .
+SFX Ts   a       t           .
+SFX Ts   a       at          .
+
+
+# present tense of verbs that end by "la" (Tunwörter, die auf "la" enden)
+# TODO: may need a revision
+SFX Tl Y 5
+SFX Tl   a       e           .
+SFX Tl  la       el          .
+SFX Tl   a       est         .
+SFX Tl   a       t           .
+SFX Tl   a       at/Vl       .
+
+# Prefix: add "g" + transform a→t at the end, regular past tense (Vergangenheitsform von Tunwörtern, die auf "la" enden)
+PFX Vl Y 1
+PFX Vl   0       g           . # TODO exception for words that start with some letters: no "g" in past tense (as defined for the other cases
+
+
+
+
+
+
+
+
+
+
+
+# dummy for verbs (Tunwörter Dummy), present tense - only used for development purposes
+SFX TD Y 4
+SFX TD   a       0           .
+SFX TD   a       st          .
+SFX TD   a       t           .
+SFX TD   a       at          .
+
+
+
+
+
+
+
+
+
+
+
+
+
