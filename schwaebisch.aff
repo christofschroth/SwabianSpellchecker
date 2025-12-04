@@ -58,7 +58,42 @@ PFX Vl   0       g           . # TODO exception for words that start with some l
 
 
 
+# Nouns that refer to groups of persons (Personengruppen regelmäßig)
+SFX Pr Y 2
+SFX Pr   er      e           .
+SFX Pr   er      a           .
 
+# Nouns that refer to persons (Personen, bei denen die weibliche Form mit "e" gebildet wird) - "e" corresponds to female singular, "enna" corresponds to female plural, male is the same for singular and plural
+SFX Pe Y 2
+SFX Pe   0       e           .
+SFX Pe   0       enna        .
+
+
+
+
+
+# Nouns for which the plural form is built by adding "a" (Mehrzahlformen, die mit "a" am Ende gebildet werden)
+SFX Ma Y 2
+SFX Ma   0       a           [^e]
+SFX Ma   e       a           e
+
+# Nouns for which the plural form is built by adding "s", usually words taken from English language (Mehrzahlformen, die mit "s" am Ende gebildet werden)
+SFX Ms Y 1
+SFX Ms   0       s           .
+
+# Nouns for which the plural form is built by adding "e" (Mehrzahlformen, die mit "e" am Ende gebildet werden)
+SFX Me Y 3
+SFX Me   0       e           [^s]
+SFX Me   0       se          is
+SFX Me   uss     üss         uss
+
+# Nouns for which the plural form is built by adding "er" (Mehrzahlformen, die mit "er" am Ende gebildet werden)
+SFX Mr Y 1
+SFX Mr   0       er          .
+
+# Nouns for which the plural form is built by changing "el" to "la" (Mehrzahlformen, die mit "la" am Ende gebildet werden)
+SFX Ml Y 1
+SFX Ml   el       la          .
 
 
 
@@ -77,8 +112,12 @@ SFX TD   a       at          .
 
 
 
-
-
+##################################################################################################################
+# The following flags are unused but have a semantical meaning
+#
+# Ti: Tunwort irregulär - irregular verbs
+# Mi: Mehrzahl irregulär - irregular plural forms; this corresponds either to (1) semantically, only a singular form makes sense, or (2) semantically, only the plural form makes sense, or (3) the singular and the plural form are the same, or (4) the singulat and the plural version differ in an irregular way
+# Nå: Nåma - names (can be persons, countries, cities, rivers, etc.)
 
 
 
