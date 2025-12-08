@@ -5,37 +5,29 @@ FLAG long # take two chars for the flags
 
 
 
+
+
+####################################################################################################################
+# Verbs/Tunwörter: generally speaking, the past tense is defined separately to make it easier to build compunds
+####################################################################################################################
+ 
+
 # regular verbs (Tunwörter regelmäßig) - present tense
 SFX Tr Y 4
 SFX Tr   a       0           .
 SFX Tr   a       st          .
-SFX Tr   a       t/Vr        .          # will be used for Vr (Vergangenheitsform regelmäßig)
+SFX Tr   a       t           .
 SFX Tr   a       at          .
-
-# Prefix: add "g" + transform a→t at the end, regular past tense (Vergangenheitsform regelmäßig)
-PFX Vr Y 1
-PFX Vr   0     g             [^bdgkptvz] # exception for words that start with these letters: no "g" in past tense
-
-# dummy for verbs where either (1) the present tense is regular but past tense is irregular, or (2) the past tense is already covered by the present tense (Tunwörter mit extra Vergangenheitsform)
-SFX Tx Y 4
-SFX Tx   a       0           .
-SFX Tx   a       st          .
-SFX Tx   a       t           .
-SFX Tx   a       at          .
 
 
 # present tense of verbs that end by "da" or "ta" (Tunwörter, die auf "da" enden), some other verbs also fall in this rule
 SFX Td Y 3
 SFX Td   a       e           .
 SFX Td   a       est         .
-SFX Td   a       at/Vd       .
-
-# Prefix: add "g" + transform a→t at the end, regular past tense (Vergangenheitsform von Tunwörtern, die auf "da" enden)
-PFX Vd Y 1
-PFX Vd   0     g             [^bgtv] # exception for words that start with these letters: no "g" in past tense
+SFX Td   a       at          .
 
 
-# present tense of verbs that end by "sa" or "ßa" (Tunwörter, die auf "sa" enden) - found no rule for the past tense, so all past tenses are marked as irregular (Ti - Tunwörter irregulär)
+# present tense of verbs that end by "sa" or "ßa" (Tunwörter, die auf "sa" enden)
 SFX Ts Y 3
 SFX Ts   a       0           .
 SFX Ts   a       t           .
@@ -45,17 +37,32 @@ SFX Ts   a       at          .
 # present tense of verbs that end by "la" (Tunwörter, die auf "la" enden)
 # TODO: may need a revision
 SFX Tl Y 5
-SFX Tl   a       e           .
+SFX Tl  la       le          .
 SFX Tl  la       el          .
-SFX Tl   a       est         .
-SFX Tl   a       t           .
-SFX Tl   a       at/Vl       .
-
-# Prefix: add "g" + transform a→t at the end, regular past tense (Vergangenheitsform von Tunwörtern, die auf "la" enden)
-PFX Vl Y 1
-PFX Vl   0       g           . # TODO exception for words that start with some letters: no "g" in past tense (as defined for the other cases
+SFX Tl  la       lest        .
+SFX Tl  la       lt          .
+SFX Tl  la       lat         .
 
 
+
+
+
+####################################################################################################################
+# Prefixes for verbs - Präfixe für Tunwörter
+####################################################################################################################
+
+
+# Prefix: add "aus"
+PFX au Y 1
+PFX au   0       aus        .
+
+
+
+
+
+####################################################################################################################
+# Nouns & Person groups - Personengruppen & Hauptwörter
+####################################################################################################################
 
 
 # Nouns that refer to groups of persons (Personengruppen regelmäßig)
@@ -63,13 +70,11 @@ SFX Pr Y 2
 SFX Pr   er      e           .
 SFX Pr   er      a           .
 
+
 # Nouns that refer to persons (Personen, bei denen die weibliche Form mit "e" gebildet wird) - "e" corresponds to female singular, "enna" corresponds to female plural, male is the same for singular and plural
 SFX Pe Y 2
 SFX Pe   0       e           .
 SFX Pe   0       enna        .
-
-
-
 
 
 # Nouns for which the plural form is built by adding "a" (Mehrzahlformen, die mit "a" am Ende gebildet werden)
@@ -77,9 +82,11 @@ SFX Ma Y 2
 SFX Ma   0       a           [^e]
 SFX Ma   e       a           e
 
+
 # Nouns for which the plural form is built by adding "s", usually words taken from English language (Mehrzahlformen, die mit "s" am Ende gebildet werden)
 SFX Ms Y 1
 SFX Ms   0       s           .
+
 
 # Nouns for which the plural form is built by adding "e" (Mehrzahlformen, die mit "e" am Ende gebildet werden)
 SFX Me Y 3
@@ -87,39 +94,162 @@ SFX Me   0       e           [^s]
 SFX Me   0       se          is
 SFX Me   uss     üss         uss
 
+
 # Nouns for which the plural form is built by adding "er" (Mehrzahlformen, die mit "er" am Ende gebildet werden)
 SFX Mr Y 1
 SFX Mr   0       er          .
+
 
 # Nouns for which the plural form is built by changing "el" to "la" (Mehrzahlformen, die mit "la" am Ende gebildet werden)
 SFX Ml Y 1
 SFX Ml   el       la          .
 
 
+# Nouns for which the plural form is built by adding "ta" (Mehrzahlformen, die mit "ta" am Ende gebildet werden)
+SFX Mt Y 1
+SFX Mt   0        ta          .
 
 
-
-
-# dummy for verbs (Tunwörter Dummy), present tense - only used for development purposes
-SFX TD Y 4
-SFX TD   a       0           .
-SFX TD   a       st          .
-SFX TD   a       t           .
-SFX TD   a       at          .
+# Nouns for which the plural form is built by changing "tom" to "tümer" (Mehrzahlformen, bei denen "tom" zu "tümer" wird)
+SFX Mü Y 1
+SFX Mü   tom      tümer       .
 
 
 
 
 
+####################################################################################################################
+# Adjectives - Eigenschaftswörter (Adjektive)
+# Generally speaking, the negations (built with "o" as a prefix) are listed in the dic file separately
+####################################################################################################################
 
-##################################################################################################################
-# The following flags are unused but have a semantical meaning
-#
+
+# adjectives regular, including comparative & superlative degrees and including negation (Eigenschaftswörter regulär)
+SFX Er Y 11
+SFX Er   0       0           .
+SFX Er   0       a           .
+SFX Er   0       am          .
+SFX Er   0       e           .
+SFX Er   0       s           .
+SFX Er   0       er          .
+SFX Er   0       ere         .
+SFX Er   0       era         .
+SFX Er   0       ers         .
+SFX Er   0       ste         .
+SFX Er   0       sta         .
+
+
+# adjectives regular, including comparative & superlative degrees and including negation (Eigenschaftswörter, die auf "t", "d", "a" oder "s" enden und regulär sind)
+SFX Et Y 21
+SFX Et   0       0           .
+SFX Et   0       a           [^a]
+SFX Et   0       na          a
+SFX Et   0       am          [^a]
+SFX Et   0       nam         a
+SFX Et   0       e           [^a]
+SFX Et   0       ne           a
+SFX Et   0       s           [^s]
+SFX Et   0       es          s
+SFX Et   0       er          [^a]
+SFX Et   0       ner          a
+SFX Et   0       ere         [^a]
+SFX Et   0       nere        a
+SFX Et   0       era         [^a]
+SFX Et   0       nera        a
+SFX Et   0       ers         [^a]
+SFX Et   0       ners        a
+SFX Et   0       este        [^a]
+SFX Et   a       este        a
+SFX Et   0       esta        [^a]
+SFX Et   a       esta        a
+
+
+# adjectives regular, including comparative & superlative degrees and including negation (Eigenschaftswörter, die auf "el" enden und regulär sind)
+SFX El Y 10
+SFX El   el      la          .
+SFX El   el      lam         .
+SFX El   el      le          .
+SFX El   0       s           .
+SFX El   el      ler         .
+SFX El   el      lere        .
+SFX El   el      lera        .
+SFX El   el      lers        .
+SFX El   0       ste         .
+SFX El   0       sta         .
+
+
+# adjectives without comparative & superlative degrees (Eigenschaftswörter die "einzahlig", also nicht steigerbar sind bzw. es keine Mehrzahlform gibt), the plural either (1) does not exist semantically or (2) is unregular
+SFX Ee Y 6
+SFX Ee   0       a           .
+SFX Ee   0       am          .
+SFX Ee   0       e           .
+SFX Ee   0       s           [^sx]
+SFX Ee   0       es          [sx]
+SFX Ee   0       er          .
+
+
+# plural form of adjectives (Eigenschaftswörter Mehrzahl), only comparative & superlative degrees, either (1) the singular is unregular or (2) the singular does not exist (should rarely be the case)
+SFX Em Y 6
+SFX Em   0       a           .
+SFX Em   0       er          .
+SFX Em   0       e           .
+SFX Em   0       s           .
+SFX Em   er      ste         .
+SFX Em   er      sta         .
+
+
+# plural form of irregular adjectives (Eigenschaftswörter unregelmäßig  Mehrzahl), only comparative & superlative degrees, either (1) the singular is unregular or (2) the singular does not exist (should rarely be the case)
+SFX Eu Y 6
+SFX Eu   0       a           .
+SFX Eu   0       er          .
+SFX Eu   0       e           .
+SFX Eu   0       s           .
+SFX Eu   er      este        .
+SFX Eu   er      esta        .
+
+
+
+
+
+####################################################################################################################
+# Pronouns - Fürwörter (Pronomen)
+####################################################################################################################
+
+
+# Possesive pronouns (Fürwörter besitzanzeigend, Possesivpronomen)
+SFX Fb Y 11
+SFX Fb   0       m           [^r]
+SFX Fb   0       am          r
+SFX Fb   0       n           [^r]
+SFX Fb   0       an          r
+SFX Fb   0       s           .
+SFX Fb   0       ne          [^r]
+SFX Fb   0       e           r
+SFX Fb   0       ner         [^r]
+SFX Fb   0       er          r
+SFX Fb   0       ra          [^r]
+SFX Fb   0       a           r
+
+
+
+
+
+
+
+
+
+
+
+
+##############################################################################################################
+# The following flags only have a semantical meaning
+# 
+# Tv: past tense of a word (Tunwort Vergangenheitsform) - it will be used in the future for compounds
+# TD: (Tunwort dummy) words that are marked as verbs for development purposes
 # Ti: Tunwort irregulär - irregular verbs
 # Mi: Mehrzahl irregulär - irregular plural forms; this corresponds either to (1) semantically, only a singular form makes sense, or (2) semantically, only the plural form makes sense, or (3) the singular and the plural form are the same, or (4) the singulat and the plural version differ in an irregular way
+# Ei: irregular adjectives (Eigenschaftswörter irregulär)
+# ED: (Eigenschaftwort Dummy) - used for development purposes
 # Nå: Nåma - names (can be persons, countries, cities, rivers, etc.)
-
-
-
-
+# UN: UNBEKANNT - unknown (or not yet defines)
 
