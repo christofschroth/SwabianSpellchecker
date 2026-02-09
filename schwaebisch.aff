@@ -1,7 +1,9 @@
 SET UTF-8
 TRY esijanrtolcdugmphbyfvkwqxzäüößåôëESIJANRTOLCDUGMPHBYFVKWQXZÄÜÖÅÔË-.
 
-FLAG long # take two chars for the flags
+# take a number from 1-65000 for the flags
+FLAG num
+
 
 
 
@@ -9,229 +11,375 @@ FLAG long # take two chars for the flags
 
 ####################################################################################################################
 # Verbs/Tunwörter: generally speaking, the past tense is defined separately to make it easier to build compunds
+# 1FNN
+# 1: refers to suffixes of verbs
+# F: 0 corresponds to present tense, 1 to past tense, 2 for irregular verbs, 3 to dummy (used for development 
+#  purposes only)
+# NN: number of rule 
 ####################################################################################################################
  
 
 # regular verbs (Tunwörter regelmäßig) - present tense
-SFX Tr Y 4
-SFX Tr   a       0           .
-SFX Tr   a       st          .
-SFX Tr   a       t           .
-SFX Tr   a       at          .
+SFX 1001 Y 4
+SFX 1001   a       0           .
+SFX 1001   a       st          .
+SFX 1001   a       t           .
+SFX 1001   a       at          .
 
 
 # present tense of verbs that end by "da" or "ta" (Tunwörter, die auf "da" enden), some other verbs also fall in this rule
-SFX Td Y 3
-SFX Td   a       e           .
-SFX Td   a       est         .
-SFX Td   a       at          .
+SFX 1002 Y 3
+SFX 1002   a       e           .
+SFX 1002   a       est         .
+SFX 1002   a       at          .
 
 
 # present tense of verbs that end by "sa" or "ßa" (Tunwörter, die auf "sa" enden)
-SFX Ts Y 3
-SFX Ts   a       0           .
-SFX Ts   a       t           .
-SFX Ts   a       at          .
+SFX 1003 Y 3
+SFX 1003   a       0           .
+SFX 1003   a       t           .
+SFX 1003   a       at          .
 
 
 # present tense of verbs that end by "la" (Tunwörter, die auf "la" enden)
-# TODO: may need a revision
-SFX Tl Y 5
-SFX Tl  la       le          .
-SFX Tl  la       el          .
-SFX Tl  la       lest        .
-SFX Tl  la       lt          .
-SFX Tl  la       lat         .
+# TODO: may need a revision - example for past tense: gschüttlat
+SFX 1004 Y 5
+SFX 1004  la       le          .
+SFX 1004  la       el          .
+SFX 1004  la       lest        .
+SFX 1004  la       lt          .
+SFX 1004  la       lat         .
 
 
 
 
 
 ####################################################################################################################
-# Prefixes for verbs - Präfixe für Tunwörter
+# Prefixes for verbs - Präfixe für Tunwörter 1XXNN
+# 1: prefix for verbs
+# XX: number of first letter in the prefix in the alphabet
+# NN: enumeration
+# TODO missing suffixes: vol
 ####################################################################################################################
 
 
-# Prefix: add "aus"
-PFX au Y 1
-PFX au   0       aus        .
-
-
-
+# Prefixes starting by "a"
+PFX 10101 Y 1
+PFX 10101   0       a          .
+PFX 10102 Y 1
+PFX 10102   0       ab         .
+PFX 10103 Y 1
+PFX 10103   0       ae         .
+PFX 10104 Y 1
+PFX 10104   0       auf        .
+PFX 10105 Y 1
+PFX 10105   0       aus        .
+# Prefixes starting by "b"
+PFX 10201 Y 1
+PFX 10201   0       be         .
+PFX 10202 Y 1
+PFX 10202   0       bei        .
+PFX 10203 Y 1
+PFX 10203   0       beraet     .
+# Prefixes starting by "d"
+PFX 10401 Y 1
+PFX 10401   0       durch      .
+PFX 10402 Y 1
+PFX 10402   0       drzua      .
+# Prefixes starting by "e"
+PFX 10501 Y 1
+PFX 10501   0       ent        .
+PFX 10502 Y 1
+PFX 10502   0       er         .
+# Prefixes starting by "f"
+PFX 10601 Y 1
+PFX 10601   0       fest       .
+PFX 10602 Y 1
+PFX 10602   0       fort       .
+PFX 10603 Y 1
+PFX 10603   0       frei       .
+# Prefixes starting by "g"
+PFX 10701 Y 1
+PFX 10701   0       gleich     .
+PFX 10702 Y 1
+PFX 10702   0       guat       .
+# Prefixes starting by "h"
+PFX 10801 Y 1
+PFX 10801   0       haoch      .
+PFX 10802 Y 1
+PFX 10802   0       henter     .
+PFX 10803 Y 1
+PFX 10803   0       her        .
+PFX 10804 Y 1
+PFX 10804   0       hoem       .
+# Prefixes starting by "l"
+PFX 11201 Y 1
+PFX 11201   0       los        .
+# Prefixes starting by "m"
+PFX 11301 Y 1
+PFX 11301   0       mit        .
+# Prefixes starting by "n"
+PFX 11401 Y 1
+PFX 11401   0       na         .
+PFX 11402 Y 1
+PFX 11402   0       nae        .
+PFX 11403 Y 1
+PFX 11403   0       nauf       .
+PFX 11404 Y 1
+PFX 11404   0       naus       .
+PFX 11405 Y 1
+PFX 11405   0       nieder     .
+PFX 11406 Y 1
+PFX 11406   0       nåch       .
+PFX 11407 Y 1
+PFX 11407   0       nô         .
+# Prefixes starting by "o"
+PFX 11501 Y 1
+PFX 11501   0       om         .
+# Prefix: add "omanander"
+PFX 11502 Y 1
+PFX 11502   0       omanander  .
+# Prefix: add "onter"
+PFX 11503 Y 1
+PFX 11503   0       onter      .
+# Prefixes starting by "r"
+PFX 11801 Y 1
+PFX 11801   0       ra         .
+PFX 11802 Y 1
+PFX 11802   0       rae        .
+PFX 11803 Y 1
+PFX 11803   0       rauf       .
+PFX 11804 Y 1
+PFX 11804   0       raus       .
+PFX 11805 Y 1
+PFX 11805   0       rom        .
+PFX 11806 Y 1
+PFX 11806   0       ronter     .
+# Prefixes starting by "s"
+PFX 11901 Y 1
+PFX 11901   0       sicher     .
+# Prefixes starting by "v"
+PFX 12201 Y 1
+PFX 12201   0       voll       .
+PFX 12202 Y 1
+PFX 12202   0       vr         .
+PFX 12203 Y 1
+PFX 12203   0       vôr        .
+# Prefixes starting by "w"
+PFX 12301 Y 1
+PFX 12301   0       weg        .
+PFX 12302 Y 1
+PFX 12302   0       weiter     .
+PFX 12303 Y 1
+PFX 12303   0       wider      .
+PFX 12304 Y 1
+PFX 12304   0       wieder     .
+# Prefixes starting by "z"
+PFX 12601 Y 1
+PFX 12601   0       zrück      .
+PFX 12602 Y 1
+PFX 12602   0       zsemma     .
+PFX 12603 Y 1
+PFX 12603   0       zua        .
+# note the following order for Sondezeichen 31:ä, 32:å, 33:ô, 34:ö, 35:ü
+# Prefixes starting by "å" 
+PFX 13201 Y 1
+PFX 13201   0       å          .
+# Prefixes starting by "ü"
+PFX 13501 Y 1
+PFX 13501   0       über       .
 
 
 ####################################################################################################################
-# Nouns & Person groups - Personengruppen & Hauptwörter
+# Nouns & Person groups - Personengruppen & Hauptwörter 2FNN
+# 2: suffix for nouns
+# F: flag, whereby 1 corresponds to person groups, 2 to other nouns, 3 a list of regular suffixes that appear over and over again, 
+#  9 is to mark irregular plural forms, unkown or not yet defined
+# NN: enumeration
 ####################################################################################################################
 
 
 # Nouns that refer to groups of persons (Personengruppen regelmäßig)
-SFX Pr Y 2
-SFX Pr   er      e           .
-SFX Pr   er      a           .
+SFX 2101 Y 2
+SFX 2101   er      e           .
+SFX 2101   er      a           .
 
 
 # Nouns that refer to persons (Personen, bei denen die weibliche Form mit "e" gebildet wird) - "e" corresponds to female singular, "enna" corresponds to female plural, male is the same for singular and plural
-SFX Pe Y 2
-SFX Pe   0       e           .
-SFX Pe   0       enna        .
+SFX 2102 Y 2
+SFX 2102   0       e           .
+SFX 2102   0       enna        .
 
 
 # Nouns for which the plural form is built by adding "a" (Mehrzahlformen, die mit "a" am Ende gebildet werden)
-SFX Ma Y 2
-SFX Ma   0       a           [^e]
-SFX Ma   e       a           e
+SFX 2203 Y 2
+SFX 2203   0       a           [^e]
+SFX 2203   e       a           e
 
 
 # Nouns for which the plural form is built by adding "s", usually words taken from English language (Mehrzahlformen, die mit "s" am Ende gebildet werden)
-SFX Ms Y 1
-SFX Ms   0       s           .
+SFX 2204 Y 1
+SFX 2204   0       s           .
 
 
 # Nouns for which the plural form is built by adding "e" (Mehrzahlformen, die mit "e" am Ende gebildet werden)
-SFX Me Y 3
-SFX Me   0       e           [^s]
-SFX Me   0       se          is
-SFX Me   uss     üss         uss
+SFX 2205 Y 1
+SFX 2205   0       e           .
 
 
 # Nouns for which the plural form is built by adding "er" (Mehrzahlformen, die mit "er" am Ende gebildet werden)
-SFX Mr Y 1
-SFX Mr   0       er          .
+SFX 2206 Y 1
+SFX 2206   0       er          .
 
 
 # Nouns for which the plural form is built by changing "el" to "la" (Mehrzahlformen, die mit "la" am Ende gebildet werden)
-SFX Ml Y 1
-SFX Ml   el       la          .
+SFX 2207 Y 1
+SFX 2207   el       la          
 
 
 # Nouns for which the plural form is built by adding "ta" (Mehrzahlformen, die mit "ta" am Ende gebildet werden)
-SFX Mt Y 1
-SFX Mt   0        ta          .
+SFX 2208 Y 1
+SFX 2208   0        ta          .
+
+
+# Nouns for which the plural form is built by adding "ena" (Mehrzahlformen, die mit "ena" am Ende gebildet werden)
+SFX 2209 Y 1
+SFX 2209   0        ena         .
 
 
 # Nouns for which the plural form is built by changing "tom" to "tümer" (Mehrzahlformen, bei denen "tom" zu "tümer" wird)
-SFX Mü Y 1
-SFX Mü   tom      tümer       .
+SFX 2310 Y 3
+SFX 2310   tom      tümer       .
+SFX 2310   nis      nisse       .
+SFX 2310   uss      üss         .
 
 
 
 
 
 ####################################################################################################################
-# Adjectives - Eigenschaftswörter (Adjektive)
+# Adjectives - Eigenschaftswörter (Adjektive) 3FNN
+# 3: suffix for adjectives
+# F: flag, whereby 0 corresponds to the case that the adjective is regular, 1 means either a) the plural does not 
+#  exist semantically or b) is unregular 2 means the singular does not exist (should rarely be the case), 3 all 
+#  other cases 
+# NN: enumeration
+#
 # Generally speaking, the negations (built with "o" as a prefix) are listed in the dic file separately
+####################################################################################################################
 ####################################################################################################################
 
 
 # adjectives regular, including comparative & superlative degrees and including negation (Eigenschaftswörter regulär)
-SFX Er Y 11
-SFX Er   0       0           .
-SFX Er   0       a           .
-SFX Er   0       am          .
-SFX Er   0       e           .
-SFX Er   0       s           .
-SFX Er   0       er          .
-SFX Er   0       ere         .
-SFX Er   0       era         .
-SFX Er   0       ers         .
-SFX Er   0       ste         .
-SFX Er   0       sta         .
+SFX 3001 Y 11
+SFX 3001   0       0            .
+SFX 3001   0       a            .
+SFX 3001   0       am           .
+SFX 3001   0       e            .
+SFX 3001   0       s            .
+SFX 3001   0       er           .
+SFX 3001   0       ere          .
+SFX 3001   0       era          .
+SFX 3001   0       ers          .
+SFX 3001   0       ste          .
+SFX 3001   0       sta          .
 
 
 # adjectives regular, including comparative & superlative degrees and including negation (Eigenschaftswörter, die auf "t", "d", "a" oder "s" enden und regulär sind)
-SFX Et Y 21
-SFX Et   0       0           .
-SFX Et   0       a           [^a]
-SFX Et   0       na          a
-SFX Et   0       am          [^a]
-SFX Et   0       nam         a
-SFX Et   0       e           [^a]
-SFX Et   0       ne           a
-SFX Et   0       s           [^s]
-SFX Et   0       es          s
-SFX Et   0       er          [^a]
-SFX Et   0       ner          a
-SFX Et   0       ere         [^a]
-SFX Et   0       nere        a
-SFX Et   0       era         [^a]
-SFX Et   0       nera        a
-SFX Et   0       ers         [^a]
-SFX Et   0       ners        a
-SFX Et   0       este        [^a]
-SFX Et   a       este        a
-SFX Et   0       esta        [^a]
-SFX Et   a       esta        a
+SFX 3002 Y 21
+SFX 3002   0       0            .
+SFX 3002   0       a            [^a]
+SFX 3002   0       na           a
+SFX 3002   0       am           [^a]
+SFX 3002   0       nam          a
+SFX 3002   0       e            [^a]
+SFX 3002   0       ne            a
+SFX 3002   0       s            [^s]
+SFX 3002   0       es           s
+SFX 3002   0       er           ^a]
+SFX 3002   0       ner          a
+SFX 3002   0       ere          [^a]
+SFX 3002   0       nere         a
+SFX 3002   0       era          [^a]
+SFX 3002   0       nera         a
+SFX 3002   0       ers          [^a]
+SFX 3002   0       ners         a
+SFX 3002   0       este         [^a]
+SFX 3002   a       este         a
+SFX 3002   0       esta         [^a]
+SFX 3002   a       esta         a
 
 
 # adjectives regular, including comparative & superlative degrees and including negation (Eigenschaftswörter, die auf "el" enden und regulär sind)
-SFX El Y 10
-SFX El   el      la          .
-SFX El   el      lam         .
-SFX El   el      le          .
-SFX El   0       s           .
-SFX El   el      ler         .
-SFX El   el      lere        .
-SFX El   el      lera        .
-SFX El   el      lers        .
-SFX El   0       ste         .
-SFX El   0       sta         .
+SFX 3003 Y 10
+SFX 3003   el      la           .
+SFX 3003   el      lam          .
+SFX 3003   el      le           .
+SFX 3003   0       s            .
+SFX 3003   el      ler          .
+SFX 3003   el      lere         .
+SFX 3003   el      lera         .
+SFX 3003   el      lers         .
+SFX 3003   0       ste          .
+SFX 3003   0       sta          .
 
 
 # adjectives without comparative & superlative degrees (Eigenschaftswörter die "einzahlig", also nicht steigerbar sind bzw. es keine Mehrzahlform gibt), the plural either (1) does not exist semantically or (2) is unregular
-SFX Ee Y 6
-SFX Ee   0       a           .
-SFX Ee   0       am          .
-SFX Ee   0       e           .
-SFX Ee   0       s           [^sx]
-SFX Ee   0       es          [sx]
-SFX Ee   0       er          .
+SFX 3104 Y 6
+SFX 3104   0       a            .
+SFX 3104   0       am           .
+SFX 3104   0       e            .
+SFX 3104   0       s            [^sx]
+SFX 3104   0       es           [sx]
+SFX 3104   0       er           .
 
 
 # plural form of adjectives (Eigenschaftswörter Mehrzahl), only comparative & superlative degrees, either (1) the singular is unregular or (2) the singular does not exist (should rarely be the case)
-SFX Em Y 6
-SFX Em   0       a           .
-SFX Em   0       er          .
-SFX Em   0       e           .
-SFX Em   0       s           .
-SFX Em   er      ste         .
-SFX Em   er      sta         .
+SFX 3205 Y 8
+SFX 3205   0       a            .
+SFX 3205   0       er           .
+SFX 3205   0       e            .
+SFX 3205   0       s            .
+SFX 3205   er      sta          [^sßx]
+SFX 3205   er      ta           [sßx]
+SFX 3205   er      ste          [^sßx]
+SFX 3205   er      te           [sßx]
+
 
 
 # plural form of irregular adjectives (Eigenschaftswörter unregelmäßig  Mehrzahl), only comparative & superlative degrees, either (1) the singular is unregular or (2) the singular does not exist (should rarely be the case)
-SFX Eu Y 6
-SFX Eu   0       a           .
-SFX Eu   0       er          .
-SFX Eu   0       e           .
-SFX Eu   0       s           .
-SFX Eu   er      este        .
-SFX Eu   er      esta        .
+SFX 3206 Y 6
+SFX 3206   0       a            .
+SFX 3206   0       er           .
+SFX 3206   0       e            .
+SFX 3206   0       s            .
+SFX 3206   er      este         .
+SFX 3206   er      esta         .
 
 
 
 
 
 ####################################################################################################################
-# Pronouns - Fürwörter (Pronomen)
+# Pronouns - Fürwörter (Pronomen) 4NNN
+# 4: suffix for pronouns
+# NNN: enumeration
 ####################################################################################################################
 
 
 # Possesive pronouns (Fürwörter besitzanzeigend, Possesivpronomen)
-SFX Fb Y 11
-SFX Fb   0       m           [^r]
-SFX Fb   0       am          r
-SFX Fb   0       n           [^r]
-SFX Fb   0       an          r
-SFX Fb   0       s           .
-SFX Fb   0       ne          [^r]
-SFX Fb   0       e           r
-SFX Fb   0       ner         [^r]
-SFX Fb   0       er          r
-SFX Fb   0       ra          [^r]
-SFX Fb   0       a           r
-
-
-
+SFX 4001 Y 11
+SFX 4001    0       m           [^r]
+SFX 4001    0       am          r
+SFX 4001    0       n           [^r]
+SFX 4001    0       an          r
+SFX 4001    0       s           .
+SFX 4001    0       ne          [^r]
+SFX 4001    0       e           r
+SFX 4001    0       ner         [^r]
+SFX 4001    0       er          r
+SFX 4001    0       ra          [^r]
+SFX 4001    0       a           r
 
 
 
@@ -244,12 +392,17 @@ SFX Fb   0       a           r
 ##############################################################################################################
 # The following flags only have a semantical meaning
 # 
-# Tv: past tense of a word (Tunwort Vergangenheitsform) - it will be used in the future for compounds
-# TD: (Tunwort dummy) words that are marked as verbs for development purposes
-# Ti: Tunwort irregulär - irregular verbs
-# Mi: Mehrzahl irregulär - irregular plural forms; this corresponds either to (1) semantically, only a singular form makes sense, or (2) semantically, only the plural form makes sense, or (3) the singular and the plural form are the same, or (4) the singulat and the plural version differ in an irregular way
-# Ei: irregular adjectives (Eigenschaftswörter irregulär)
-# ED: (Eigenschaftwort Dummy) - used for development purposes
-# Nå: Nåma - names (can be persons, countries, cities, rivers, etc.)
-# UN: UNBEKANNT - unknown (or not yet defines)
+# 1: undefined (but not a noun)
+# 99: number (Zahl) - compunds of numbers (to be defined)
+# 1100: past tense of a word (Tunwort Vergangenheitsform) - it will be used in the future for compounds
+# 1200: Tunwort irregulär - irregular verbs
+# 1300: (Tunwort dummy) words that are marked as verbs for development purposes
+# 2901: Mehrzahl irregulär - irregular plural forms of nouns; this corresponds either to (1) semantically, only a singular form makes sense, or (2) semantically, only the plural form makes sense, or (3) the singular and the plural form are the same, or (4) the singular and the plural version differ in an irregular way
+# 2902: Nåma - names (can be persons, countries, cities, rivers, etc.)
+# 2903: UNBEKANNTES NOMEN - unknown (or not yet defined)
+# 3300: irregular adjectives (Eigenschaftswörter irregulär)
+# 3301: (Eigenschaftwort Dummy) - used for development purposes
+# 3302: (Eigenschaftswort Unbekannt) - not yet defined
+
+
 
