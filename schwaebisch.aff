@@ -7,6 +7,22 @@ FLAG num
 
 
 
+# with this we force the spell checker to suggest the correct word
+REP 10
+REP geba gea
+REP gibst geist
+REP gibt geit
+REP gent gebat
+REP glassa glao
+REP läßt låt
+REP lässt låt
+REP laß låsch
+REP lassa lao
+REP lassat lent
+
+
+
+
 
 
 ####################################################################################################################
@@ -42,7 +58,6 @@ SFX 1003   a       at          .
 
 
 # present tense of verbs that end by "la" (Tunwörter, die auf "la" enden)
-# TODO: may need a revision - example for past tense: gschüttlat
 SFX 1004 Y 5
 SFX 1004  la       le          .
 SFX 1004  la       el          .
@@ -53,13 +68,25 @@ SFX 1004  la       lat         .
 
 
 
+# present tense of verbs that end by "iga" (Tunwörter, die auf "iga" enden)
+# this is almost the same to the regular case, only 1st person singular differs
+# Note, that some verbs that end by "iga" are still regular
+SFX 1005 Y 4
+SFX 1005   a       e           .
+SFX 1005   a       st          .
+SFX 1005   a       t           .
+SFX 1005   a       at          .
+
+
+
+
 
 ####################################################################################################################
 # Prefixes for verbs - Präfixe für Tunwörter 1XXNN
 # 1: prefix for verbs
 # XX: number of first letter in the prefix in the alphabet
 # NN: enumeration
-# TODO missing suffixes: vol
+# TODO missing suffixes: vol, dar, drher, dranna
 ####################################################################################################################
 
 
@@ -74,6 +101,8 @@ PFX 10104 Y 1
 PFX 10104   0       auf        .
 PFX 10105 Y 1
 PFX 10105   0       aus        .
+PFX 10106 Y 1
+PFX 10106   0       ausanander .
 # Prefixes starting by "b"
 PFX 10201 Y 1
 PFX 10201   0       be         .
@@ -83,14 +112,18 @@ PFX 10203 Y 1
 PFX 10203   0       beraet     .
 # Prefixes starting by "d"
 PFX 10401 Y 1
-PFX 10401   0       durch      .
+PFX 10401   0       drauf      .
 PFX 10402 Y 1
-PFX 10402   0       drzua      .
+PFX 10402   0       durch      .
+PFX 10403 Y 1
+PFX 10403   0       drzua      .
 # Prefixes starting by "e"
 PFX 10501 Y 1
 PFX 10501   0       ent        .
 PFX 10502 Y 1
-PFX 10502   0       er         .
+PFX 10502   0       entgega    .
+PFX 10503 Y 1
+PFX 10503   0       er         .
 # Prefixes starting by "f"
 PFX 10601 Y 1
 PFX 10601   0       fest       .
@@ -130,16 +163,16 @@ PFX 11404   0       naus       .
 PFX 11405 Y 1
 PFX 11405   0       nieder     .
 PFX 11406 Y 1
-PFX 11406   0       nåch       .
+PFX 11406   0       nom        .
 PFX 11407 Y 1
-PFX 11407   0       nô         .
+PFX 11407   0       nåch       .
+PFX 11408 Y 1
+PFX 11408   0       nô         .
 # Prefixes starting by "o"
 PFX 11501 Y 1
 PFX 11501   0       om         .
-# Prefix: add "omanander"
 PFX 11502 Y 1
 PFX 11502   0       omanander  .
-# Prefix: add "onter"
 PFX 11503 Y 1
 PFX 11503   0       onter      .
 # Prefixes starting by "r"
@@ -162,9 +195,11 @@ PFX 11901   0       sicher     .
 PFX 12201 Y 1
 PFX 12201   0       voll       .
 PFX 12202 Y 1
-PFX 12202   0       vr         .
+PFX 12202   0       vorbei     .
 PFX 12203 Y 1
-PFX 12203   0       vôr        .
+PFX 12203   0       vr         .
+PFX 12204 Y 1
+PFX 12204   0       vôr        .
 # Prefixes starting by "w"
 PFX 12301 Y 1
 PFX 12301   0       weg        .
@@ -178,7 +213,7 @@ PFX 12304   0       wieder     .
 PFX 12601 Y 1
 PFX 12601   0       zrück      .
 PFX 12602 Y 1
-PFX 12602   0       zsemma     .
+PFX 12602   0       zsema      .
 PFX 12603 Y 1
 PFX 12603   0       zua        .
 # note the following order for Sondezeichen 31:ä, 32:å, 33:ô, 34:ö, 35:ü
@@ -188,6 +223,8 @@ PFX 13201   0       å          .
 # Prefixes starting by "ü"
 PFX 13501 Y 1
 PFX 13501   0       über       .
+PFX 13502 Y 1
+PFX 13502   0       übrig      .
 
 
 ####################################################################################################################
@@ -271,7 +308,7 @@ SFX 2310   uss      üss         .
 
 
 # adjectives regular, including comparative & superlative degrees and including negation (Eigenschaftswörter regulär)
-SFX 3001 Y 11
+SFX 3001 Y 12
 SFX 3001   0       0            .
 SFX 3001   0       a            .
 SFX 3001   0       am           .
@@ -283,20 +320,21 @@ SFX 3001   0       era          .
 SFX 3001   0       ers          .
 SFX 3001   0       ste          .
 SFX 3001   0       sta          .
+SFX 3001   0       sts          .
 
 
 # adjectives regular, including comparative & superlative degrees and including negation (Eigenschaftswörter, die auf "t", "d", "a" oder "s" enden und regulär sind)
-SFX 3002 Y 21
+SFX 3002 Y 23
 SFX 3002   0       0            .
 SFX 3002   0       a            [^a]
-SFX 3002   0       na           a
+SFX 3002   a       ena           a
 SFX 3002   0       am           [^a]
 SFX 3002   0       nam          a
 SFX 3002   0       e            [^a]
-SFX 3002   0       ne            a
-SFX 3002   0       s            [^s]
+SFX 3002   a       ene          a
+SFX 3002   a       es           [^s]
 SFX 3002   0       es           s
-SFX 3002   0       er           ^a]
+SFX 3002   0       er           [^a]
 SFX 3002   0       ner          a
 SFX 3002   0       ere          [^a]
 SFX 3002   0       nere         a
@@ -308,10 +346,12 @@ SFX 3002   0       este         [^a]
 SFX 3002   a       este         a
 SFX 3002   0       esta         [^a]
 SFX 3002   a       esta         a
+SFX 3002   0       estas        [^a]
+SFX 3002   a       estas        a
 
 
 # adjectives regular, including comparative & superlative degrees and including negation (Eigenschaftswörter, die auf "el" enden und regulär sind)
-SFX 3003 Y 10
+SFX 3003 Y 11
 SFX 3003   el      la           .
 SFX 3003   el      lam          .
 SFX 3003   el      le           .
@@ -322,6 +362,7 @@ SFX 3003   el      lera         .
 SFX 3003   el      lers         .
 SFX 3003   0       ste          .
 SFX 3003   0       sta          .
+SFX 3003   0       stas         .
 
 
 # adjectives without comparative & superlative degrees (Eigenschaftswörter die "einzahlig", also nicht steigerbar sind bzw. es keine Mehrzahlform gibt), the plural either (1) does not exist semantically or (2) is unregular
@@ -330,7 +371,7 @@ SFX 3104   0       a            .
 SFX 3104   0       am           .
 SFX 3104   0       e            .
 SFX 3104   0       s            [^sx]
-SFX 3104   0       es           [sx]
+SFX 3104   0       as           [sx]
 SFX 3104   0       er           .
 
 
@@ -348,13 +389,14 @@ SFX 3205   er      te           [sßx]
 
 
 # plural form of irregular adjectives (Eigenschaftswörter unregelmäßig  Mehrzahl), only comparative & superlative degrees, either (1) the singular is unregular or (2) the singular does not exist (should rarely be the case)
-SFX 3206 Y 6
+SFX 3206 Y 7
 SFX 3206   0       a            .
 SFX 3206   0       er           .
 SFX 3206   0       e            .
 SFX 3206   0       s            .
 SFX 3206   er      este         .
 SFX 3206   er      esta         .
+SFX 3206   er      estas        .
 
 
 
@@ -367,7 +409,7 @@ SFX 3206   er      esta         .
 ####################################################################################################################
 
 
-# Possesive pronouns (Fürwörter besitzanzeigend, Possesivpronomen)
+# Possesive pronouns (Fürwörter besitzanzeigend, Possesivpronomen) - note that "euer" is defined separately
 SFX 4001 Y 11
 SFX 4001    0       m           [^r]
 SFX 4001    0       am          r
@@ -397,12 +439,15 @@ SFX 4001    0       a           r
 # 1100: past tense of a word (Tunwort Vergangenheitsform) - it will be used in the future for compounds
 # 1200: Tunwort irregulär - irregular verbs
 # 1300: (Tunwort dummy) words that are marked as verbs for development purposes
-# 2901: Mehrzahl irregulär - irregular plural forms of nouns; this corresponds either to (1) semantically, only a singular form makes sense, or (2) semantically, only the plural form makes sense, or (3) the singular and the plural form are the same, or (4) the singular and the plural version differ in an irregular way
+# 1400: Tunwort nicht definiert - non-defined verb, it seems like we could setup some new rules
+# 2900: Einzahl irregulär - refers to a singular form of a noun, the plural is irregular or does not exist.
+# 2901: Mehrzahl irregulär - irregular plural forms of nouns; this corresponds either to (1) semantically, only the plural form makes sense, or (2) the singular and the plural form are the same, or (3) the singular and the plural version differ in an irregular way
 # 2902: Nåma - names (can be persons, countries, cities, rivers, etc.)
 # 2903: UNBEKANNTES NOMEN - unknown (or not yet defined)
 # 3300: irregular adjectives (Eigenschaftswörter irregulär)
 # 3301: (Eigenschaftwort Dummy) - used for development purposes
 # 3302: (Eigenschaftswort Unbekannt) - not yet defined
+# 4002: irregular pronoun
 
 
 
