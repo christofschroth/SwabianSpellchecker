@@ -28,8 +28,7 @@ Drom han i en mühhafter Hådarbaet ågfanga, für LaTeX (ond dådrmit ao für O
 ## Nächste Schritt (en Planong):
 
 - Weitere Wörter auffülla,
-- A Grammatik zsemastella:
-  - Übersicht en ra pdf,
-  - Grammatik weiter ausdefiniera für dia `schwaebisch.aff` Datei (insbesondere dia Compunds),
+- Grammatikübersicht zsemastella (pdf),
+- Grammatik weiter ausdefiniera für dia `schwaebisch.aff` Datei (z. B. Verba, mô als Aegeschaftswort vrwendat werat),
 - Übersicht über dia Abweichonga aus dr Bibel für Schwoba zsemastella (pdf),  
-- Oregelmäßige Tunwörter als Tabelle (evtl. pdf) zsemastella.
+- Oregelmäßige Tunwörter durchchecka, vôr ällam ob se konsistent mit `schwaebisch.dic` Datei send.
