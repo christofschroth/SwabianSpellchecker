@@ -1,3 +1,16 @@
+#	Version: 0.2.2.11
+#
+#	Copyright (C) 2025-2026
+#	Christof Schroth <christofschrothATgmxDOTnet>
+#
+#   License: GPL-3.0
+#   There should be a copy of this license included
+#   with every distribution of this dictionary. Modified
+#   versions using the GPL may only include the GPL.
+#   Lizenz: GPL-3.0
+#   Wer moent, r müaßt s benutza, därf des gern macha.
+#   Wer moent, r müaßt dia Lizenz vrletza, kriagt da Ranzavol..
+
 SET UTF-8
 TRY esijanrtolcdugmphbyfvkwqxzäüößåôëESIJANRTOLCDUGMPHBYFVKWQXZÄÜÖÅÔË-.
 
@@ -8,7 +21,7 @@ FLAG num
 
 
 # with this we force the spell checker to suggest the correct word
-REP 10
+REP 13
 REP geba gea
 REP gibst geist
 REP gibt geit
@@ -19,7 +32,9 @@ REP lässt låt
 REP laß låsch
 REP lassa lao
 REP lassat lent
-
+REP schlägt schlaet
+REP schlägst schlaest
+REP Januar Jänner
 
 
 
@@ -114,9 +129,13 @@ PFX 10203   0       beraet     .
 PFX 10401 Y 1
 PFX 10401   0       drauf      .
 PFX 10402 Y 1
-PFX 10402   0       durch      .
+PFX 10402   0       drvo       .
 PFX 10403 Y 1
-PFX 10403   0       drzua      .
+PFX 10403   0       durch      .
+PFX 10404 Y 1
+PFX 10404   0       drzua      .
+PFX 10405 Y 1
+PFX 10405   0       drå        .
 # Prefixes starting by "e"
 PFX 10501 Y 1
 PFX 10501   0       ent        .
@@ -135,16 +154,20 @@ PFX 10603   0       frei       .
 PFX 10701 Y 1
 PFX 10701   0       gleich     .
 PFX 10702 Y 1
-PFX 10702   0       guat       .
+PFX 10702   0       grad       .
+PFX 10703 Y 1
+PFX 10703   0       guat       .
 # Prefixes starting by "h"
 PFX 10801 Y 1
 PFX 10801   0       haoch      .
 PFX 10802 Y 1
-PFX 10802   0       henter     .
+PFX 10802   0       he         .
 PFX 10803 Y 1
-PFX 10803   0       her        .
+PFX 10803   0       henter     .
 PFX 10804 Y 1
-PFX 10804   0       hoem       .
+PFX 10804   0       her        .
+PFX 10805 Y 1
+PFX 10805   0       hoem       .
 # Prefixes starting by "l"
 PFX 11201 Y 1
 PFX 11201   0       los        .
@@ -193,13 +216,15 @@ PFX 11901 Y 1
 PFX 11901   0       sicher     .
 # Prefixes starting by "v"
 PFX 12201 Y 1
-PFX 12201   0       voll       .
+PFX 12201   0       vol        .
 PFX 12202 Y 1
-PFX 12202   0       vorbei     .
+PFX 12202   0       voll       .
 PFX 12203 Y 1
-PFX 12203   0       vr         .
+PFX 12203   0       vorbei     .
 PFX 12204 Y 1
-PFX 12204   0       vôr        .
+PFX 12204   0       vr         .
+PFX 12205 Y 1
+PFX 12205   0       vôr        .
 # Prefixes starting by "w"
 PFX 12301 Y 1
 PFX 12301   0       weg        .
@@ -290,6 +315,11 @@ SFX 2310   tom      tümer       .
 SFX 2310   nis      nisse       .
 SFX 2310   uss      üss         .
 
+# Nouns that refer to languages (auf Englisch, em Englischa, ens Englische)
+SFX 2800 Y 2
+SFX 2800   0        a           .
+SFX 2800   0        e           .
+
 
 
 
@@ -323,7 +353,7 @@ SFX 3001   0       sta          .
 SFX 3001   0       sts          .
 
 
-# adjectives regular, including comparative & superlative degrees and including negation (Eigenschaftswörter, die auf "t", "d", "a" oder "s" enden und regulär sind)
+# adjectives regular, including comparative & superlative degrees and including negation (Eigenschaftswörter, die auf "a", "d", "s", "t" oder "x" enden und regulär sind)
 SFX 3002 Y 23
 SFX 3002   0       0            .
 SFX 3002   0       a            [^a]
@@ -435,6 +465,7 @@ SFX 4001    0       a           r
 # The following flags only have a semantical meaning
 # 
 # 1: undefined (but not a noun)
+# 2: two words connected with a ' - examples: he'mr, ischd's, sich's
 # 99: number (Zahl) - compunds of numbers (to be defined)
 # 1100: past tense of a word (Tunwort Vergangenheitsform) - it will be used in the future for compounds
 # 1200: Tunwort irregulär - irregular verbs
@@ -443,7 +474,7 @@ SFX 4001    0       a           r
 # 2900: Einzahl irregulär - refers to a singular form of a noun, the plural is irregular or does not exist.
 # 2901: Mehrzahl irregulär - irregular plural forms of nouns; this corresponds either to (1) semantically, only the plural form makes sense, or (2) the singular and the plural form are the same, or (3) the singular and the plural version differ in an irregular way
 # 2902: Nåma - names (can be persons, countries, cities, rivers, etc.)
-# 2903: UNBEKANNTES NOMEN - unknown (or not yet defined)
+# 2988: UNBEKANNTES NOMEN - unknown (or not yet defined)
 # 3300: irregular adjectives (Eigenschaftswörter irregulär)
 # 3301: (Eigenschaftwort Dummy) - used for development purposes
 # 3302: (Eigenschaftswort Unbekannt) - not yet defined
