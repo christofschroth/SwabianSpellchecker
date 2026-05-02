@@ -1,4 +1,4 @@
-#	Version: 0.2.2.11
+#	Version: 0.2.3.11
 #
 #	Copyright (C) 2025-2026
 #	Christof Schroth <christofschrothATgmxDOTnet>
@@ -9,7 +9,7 @@
 #   versions using the GPL may only include the GPL.
 #   Lizenz: GPL-3.0
 #   Wer moent, r müaßt s benutza, därf des gern macha.
-#   Wer moent, r müaßt dia Lizenz vrletza, kriagt da Ranzavol..
+#   Wer moent, r müaßt dia Lizenz vrletza, kriagt da Ranzavol.
 
 SET UTF-8
 TRY esijanrtolcdugmphbyfvkwqxzäüößåôëESIJANRTOLCDUGMPHBYFVKWQXZÄÜÖÅÔË-.
@@ -21,20 +21,26 @@ FLAG num
 
 
 # with this we force the spell checker to suggest the correct word
-REP 13
+REP 18
 REP geba gea
 REP gibst geist
 REP gibt geit
 REP gent gebat
 REP glassa glao
+REP ißt isst
 REP läßt låt
 REP lässt låt
 REP laß låsch
 REP lassa lao
 REP lassat lent
+REP muass muaß
+REP nommal nômål
+REP paß pass
 REP schlägt schlaet
 REP schlägst schlaest
 REP Januar Jänner
+REP Haß Hass
+
 
 
 
@@ -101,7 +107,7 @@ SFX 1005   a       at          .
 # 1: prefix for verbs
 # XX: number of first letter in the prefix in the alphabet
 # NN: enumeration
-# TODO missing suffixes: vol, dar, drher, dranna
+# TODO missing suffixes: nüber
 ####################################################################################################################
 
 
@@ -127,15 +133,23 @@ PFX 10203 Y 1
 PFX 10203   0       beraet     .
 # Prefixes starting by "d"
 PFX 10401 Y 1
-PFX 10401   0       drauf      .
+PFX 10401   0       dar        .
 PFX 10402 Y 1
-PFX 10402   0       drvo       .
+PFX 10402   0       drauf      .
 PFX 10403 Y 1
-PFX 10403   0       durch      .
+PFX 10403   0       drvo       .
 PFX 10404 Y 1
-PFX 10404   0       drzua      .
+PFX 10404   0       durch      .
 PFX 10405 Y 1
-PFX 10405   0       drå        .
+PFX 10405   0       dranna      .
+PFX 10406 Y 1
+PFX 10406   0       drher      .
+PFX 10407 Y 1
+PFX 10407   0       drzua      .
+PFX 10408 Y 1
+PFX 10408   0       drå        .
+PFX 10409 Y 1
+PFX 10409   0       då         .
 # Prefixes starting by "e"
 PFX 10501 Y 1
 PFX 10501   0       ent        .
@@ -204,13 +218,15 @@ PFX 11801   0       ra         .
 PFX 11802 Y 1
 PFX 11802   0       rae        .
 PFX 11803 Y 1
-PFX 11803   0       rauf       .
+PFX 11803   0       ran        .
 PFX 11804 Y 1
-PFX 11804   0       raus       .
+PFX 11804   0       rauf       .
 PFX 11805 Y 1
-PFX 11805   0       rom        .
+PFX 11805   0       raus       .
 PFX 11806 Y 1
-PFX 11806   0       ronter     .
+PFX 11806   0       rom        .
+PFX 11807 Y 1
+PFX 11807   0       ronter     .
 # Prefixes starting by "s"
 PFX 11901 Y 1
 PFX 11901   0       sicher     .
@@ -252,6 +268,7 @@ PFX 13502 Y 1
 PFX 13502   0       übrig      .
 
 
+
 ####################################################################################################################
 # Nouns & Person groups - Personengruppen & Hauptwörter 2FNN
 # 2: suffix for nouns
@@ -274,9 +291,11 @@ SFX 2102   0       enna        .
 
 
 # Nouns for which the plural form is built by adding "a" (Mehrzahlformen, die mit "a" am Ende gebildet werden)
-SFX 2203 Y 2
+SFX 2203 Y 3
 SFX 2203   0       a           [^e]
 SFX 2203   e       a           e
+SFX 2203   ë       a           ë
+
 
 
 # Nouns for which the plural form is built by adding "s", usually words taken from English language (Mehrzahlformen, die mit "s" am Ende gebildet werden)
@@ -338,6 +357,7 @@ SFX 2800   0        e           .
 
 
 # adjectives regular, including comparative & superlative degrees and including negation (Eigenschaftswörter regulär)
+# this also includes nationalities, e.g. deutsch, britisch, europäisch, etc.
 SFX 3001 Y 12
 SFX 3001   0       0            .
 SFX 3001   0       a            .
@@ -396,6 +416,7 @@ SFX 3003   0       stas         .
 
 
 # adjectives without comparative & superlative degrees (Eigenschaftswörter die "einzahlig", also nicht steigerbar sind bzw. es keine Mehrzahlform gibt), the plural either (1) does not exist semantically or (2) is unregular
+# examples: zwôestimmig (Musikinstrument), warm
 SFX 3104 Y 6
 SFX 3104   0       a            .
 SFX 3104   0       am           .
@@ -405,7 +426,11 @@ SFX 3104   0       as           [sx]
 SFX 3104   0       er           .
 
 
+
+
+
 # plural form of adjectives (Eigenschaftswörter Mehrzahl), only comparative & superlative degrees, either (1) the singular is unregular or (2) the singular does not exist (should rarely be the case)
+# Examples: wärmer, später
 SFX 3205 Y 8
 SFX 3205   0       a            .
 SFX 3205   0       er           .
@@ -430,7 +455,16 @@ SFX 3206   er      estas        .
 
 
 
+####################################################################################################################
+# Prefixes for adjectives - Präfixe für Eigenschaftswörter 3NNNN
+# 3: prefix for adjectives
+# NNNN: enumeration
+####################################################################################################################
 
+PFX 30001 Y 1
+PFX 30001   0       o          .
+PFX 30101 Y 1
+PFX 30101   0       äller      .
 
 ####################################################################################################################
 # Pronouns - Fürwörter (Pronomen) 4NNN
@@ -453,7 +487,12 @@ SFX 4001    0       er          r
 SFX 4001    0       ra          [^r]
 SFX 4001    0       a           r
 
-
+# Indefinite pronouns (Fürwörter unbekannt, Indefinitpronomen)
+# example: welche
+SFX 4002 Y 3
+SFX 4002    0       e           .
+SFX 4002    0       er          .
+SFX 4002    0       as          .
 
 
 
@@ -466,19 +505,27 @@ SFX 4001    0       a           r
 # 
 # 1: undefined (but not a noun)
 # 2: two words connected with a ' - examples: he'mr, ischd's, sich's
+# 44444: Prefixes for verbs added (4=d=done)
 # 99: number (Zahl) - compunds of numbers (to be defined)
+# 110: conjunctions (Konjunktionen bzw. Bindewörter), examples: weil, drmit
+# 140: adverbs (Adverbien, 1=a,4=d)
+# 160: preposition (Verhältniswort)
 # 1100: past tense of a word (Tunwort Vergangenheitsform) - it will be used in the future for compounds
 # 1200: Tunwort irregulär - irregular verbs
 # 1300: (Tunwort dummy) words that are marked as verbs for development purposes
 # 1400: Tunwort nicht definiert - non-defined verb, it seems like we could setup some new rules
-# 2900: Einzahl irregulär - refers to a singular form of a noun, the plural is irregular or does not exist.
-# 2901: Mehrzahl irregulär - irregular plural forms of nouns; this corresponds either to (1) semantically, only the plural form makes sense, or (2) the singular and the plural form are the same, or (3) the singular and the plural version differ in an irregular way
-# 2902: Nåma - names (can be persons, countries, cities, rivers, etc.)
+# 2900: Einzahl irregulär - refers to a singular form of a noun, the plural is irregular.
+# 2901: Einzahl irregulär - refers to a singular form of a noun, the plural does not exist semantically
+# 2902: Mehrzahl irregulär - irregular plural forms of nouns; this corresponds either to (1) semantically, only the plural form makes sense, or (2) the singular and the plural version differ in an irregular way
+# 2903: Mehrzahl irregulär - irregular plural forms of nouns; this corresponds to the case where both, singular and plurar are the same
+# 2912: Nåma - names (can be persons, countries, cities, rivers, etc.)
 # 2988: UNBEKANNTES NOMEN - unknown (or not yet defined)
 # 3300: irregular adjectives (Eigenschaftswörter irregulär)
 # 3301: (Eigenschaftwort Dummy) - used for development purposes
 # 3302: (Eigenschaftswort Unbekannt) - not yet defined
-# 4002: irregular pronoun
-
+# 4040: irregular pronoun
+# 4088: unknown pronoun (unbekanntes pronomen) - may refer to the case where only one form exists
+#
+# TODO: check 2900, 2901 2902 and 2903 (alle vor Version 02.02.11)
 
 
