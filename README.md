@@ -25,7 +25,7 @@ Drom han i en mühhafter Hådarbaet ågfanga, für LaTeX (ond dådrmit ao für O
 
 
 - Der Standard håt Zaeche, mô s em Schriftdeutscha net (ond em Englischa erst recht net) geit:
-  - Å, Ô, å, ô, ë.
+  - Å, Ô, å, ô, ë, ï.
   - Weil: s Schwäbische håt - ähnlich wia s Französische (dia hent halt 3, mir hent 2 drvo) - Nasallaute, mô mr em Schriftdeutscha net wiedergea kå.
 
 ## Nächste Schritt (en Planong):
